@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Login com Supabase</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+    <h1>Login</h1>
+    <input type="email" id="email" placeholder="Seu e-mail">
+    <input type="password" id="password" placeholder="Sua senha">
+    <button onclick="login()">Entrar</button>
+    <script>
+        const supabase = supabase.createClient("SUA_URL_SUPABASE", "SUA_ANON_KEY");
+
+        async function login() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const { user, error } = await supabase.auth.signInWithPassword({ email, password });
+
+            if (error) {
+                alert("Erro ao logar: " + error.message);
+            } else {
+                alert("Login bem-sucedido!");
+                window.location.href = "videos.html";
+            }
+        }
+    </script>
+</body>
+</html>
