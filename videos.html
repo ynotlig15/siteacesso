@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Vídeos</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+    <h1>Vídeos</h1>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/SEU_VIDEO_URL" frameborder="0"></iframe>
+
+    <script>
+        const supabase = window.supabase.createClient("https://yzhxztmusxfrpkopcpgk.supabase.co", 
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6aHh6dG11c3hmcnBrb3BjcGdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk0MjUzODEsImV4cCI6MjA2NTAwMTM4MX0.pSlW443xUPgQImqWMjsFwseoCOSEJ3G1vCT3CzDM_OU");
+
+        async function checkAuth() {
+            const { data } = await supabase.auth.getSession();
+            if (!data.session) {
+                alert("Você não está logado!");
+                window.location.href = "login.html";
+            }
+        }
+
+        checkAuth();
+    </script>
+</body>
+</html>
